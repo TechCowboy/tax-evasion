@@ -2,8 +2,8 @@ class_name TerrainGeneration
 extends Node
 
 var mesh : MeshInstance3D
-var size_depth : int = 100
-var size_width : int = 100
+var size_depth : int = 300
+var size_width : int = 300
 var mesh_resolution : int = 2
 @export var noise : FastNoiseLite
 @export var max_height = 70
@@ -22,6 +22,8 @@ var spawnable_objects: Array[SpawnableObject]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	Globals.terrain_generation = self
+	
 	for i in get_children():
 		if i is SpawnableObject:
 			spawnable_objects.append(i)
@@ -39,7 +41,7 @@ func _ready() -> void:
 	await nav_region.bake_finished
 	
 	# spawn in AI
-
+	Globals.nav_region = nav_region
 
 func generate() -> void:
 	var plane_mesh = PlaneMesh.new()

@@ -1,0 +1,52 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bgexmo37lpjqg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_funo8"]
+bg_color = Color(0.421959, 0.627995, 0.767763, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wca60"]
+bg_color = Color(0.421959, 0.627995, 0.767763, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x78rd"]
+bg_color = Color(0.421959, 0.627995, 0.767763, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ah46u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebccb"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clnl2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syu7e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktaku"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbcni"]
+bg_color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[resource]
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/constants/h_separation = 10
+Button/constants/outline_size = 4
+Button/styles/hover = SubResource("StyleBoxFlat_funo8")
+Button/styles/hover_mirrored = SubResource("StyleBoxFlat_wca60")
+Button/styles/normal = SubResource("StyleBoxFlat_wca60")
+Button/styles/pressed = SubResource("StyleBoxFlat_x78rd")
+CheckBox/styles/hover = SubResource("StyleBoxFlat_ah46u")
+CheckBox/styles/normal = SubResource("StyleBoxFlat_ebccb")
+CheckBox/styles/pressed = SubResource("StyleBoxFlat_clnl2")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_syu7e")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_ktaku")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_gbcni")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_gbcni")

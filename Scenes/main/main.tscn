@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://by76nep2o8pri"]
+[gd_scene load_steps=17 format=3 uid="uid://by76nep2o8pri"]
 
+[ext_resource type="Script" uid="uid://bidbedu4q22rd" path="res://Scenes/main/main.gd" id="1_b3x3g"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="1_brlrh"]
 [ext_resource type="Script" uid="uid://bm8xx6ya87sis" path="res://Procedural Generation/terrain_generation.gd" id="1_wcurd"]
 [ext_resource type="Script" uid="uid://bf83nt0irtdq5" path="res://Procedural Generation/spawnable_object.gd" id="2_brlrh"]
 [ext_resource type="PackedScene" uid="uid://dju443moxaprb" path="res://Models/Tree/Tree.tscn" id="3_4jhlv"]
 [ext_resource type="PackedScene" uid="uid://crlk3u335xyr6" path="res://Models/Rock/Rock.tscn" id="4_b3x3g"]
 [ext_resource type="PackedScene" uid="uid://bcx2ymqqtlx4w" path="res://Scenes/player/xr_controller.tscn" id="6_4jhlv"]
+[ext_resource type="PackedScene" uid="uid://b3dvv3yl0gk2g" path="res://Scenes/x_bot/x_bot.tscn" id="8_8lqer"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l6lx3"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -22,12 +24,12 @@ fog_light_energy = 5.04
 fog_sun_scatter = 1.1
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l6lx3"]
-noise_type = 0
+seed = 4
 frequency = 0.003
 
-[sub_resource type="Curve" id="Curve_q5hwx"]
-_data = [Vector2(0, 0), 0.0, 0.070412, 0, 1, Vector2(0.159574, 0.011236), 0.0, 0.0, 0, 0, Vector2(0.207447, 0.123596), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.1058, 0.0, 1, 0]
-point_count = 4
+[sub_resource type="Curve" id="Curve_hgq70"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.460674), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikrvs"]
 albedo_color = Color(0.176526, 9.2411e-06, 0.744644, 1)
@@ -39,8 +41,13 @@ material = SubResource("StandardMaterial3D_ikrvs")
 [sub_resource type="NavigationMesh" id="NavigationMesh_ikrvs"]
 geometry_source_geometry_mode = 2
 geometry_source_group_name = &"NavSource"
+cell_size = 3.0
+agent_radius = 3.0
+agent_max_climb = 1.0
+region_min_size = 3.0
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_b3x3g")
 
 [node name="StartXR" parent="." instance=ExtResource("1_brlrh")]
 
@@ -54,7 +61,7 @@ shadow_enabled = true
 [node name="TerrainGeneration" type="Node" parent="."]
 script = ExtResource("1_wcurd")
 noise = SubResource("FastNoiseLite_l6lx3")
-elevation_curve = SubResource("Curve_q5hwx")
+elevation_curve = SubResource("Curve_hgq70")
 
 [node name="SpawnableObject_Tree" type="Node" parent="TerrainGeneration"]
 script = ExtResource("2_brlrh")
@@ -66,6 +73,12 @@ max_scale = 1.2
 script = ExtResource("2_brlrh")
 scenes_to_spawn = Array[PackedScene]([ExtResource("4_b3x3g")])
 spawn_count = 10
+max_scale = 4.0
+
+[node name="SpawnableObject_Taxes" type="Node" parent="TerrainGeneration"]
+script = ExtResource("2_brlrh")
+scenes_to_spawn = Array[PackedScene]([ExtResource("8_8lqer")])
+spawn_count = 1
 max_scale = 4.0
 
 [node name="water" type="MeshInstance3D" parent="TerrainGeneration"]
